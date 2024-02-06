@@ -6,26 +6,24 @@ public class lab1 {
 	public static void main(String[] args) {
 		Park thepark = new Park();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter number of visitor's slots:");
+        System.out.println("Зорчигчийн зогсоолын дугаарыг оруул."); //Please enter number of visitor's slots
         int numOfVisitorSlot = scanner.nextInt();
         scanner.nextLine(); 
-        System.out.println("Please enter number of staff's slots:");
+        System.out.println("Ажилчдын зогсоолын дугаарыг оруул.");
         int numOfStaffSlot = scanner.nextInt();
         scanner.nextLine();
         thepark.createVisitorSlots(numOfVisitorSlot);
         thepark.createStaffSlots(numOfStaffSlot);
 		 while (true) {
-	            System.out.println("Menu:");
-	            System.out.println("1. List all parking slots");
-	            System.out.println("2. Park a car");
-	            System.out.println("3. Search for a car");
-	            System.out.println("4. Add a new parking slot");
-	            System.out.println("5. Remove a parking slot");
-	            System.out.println("6. Remove a car from a parking slot");
-	            System.out.println("7. Exit");
-	            System.out.print("Enter your choice: ");
-	            System.out.print("check");
-	            System.out.println("cheec11");
+	            System.out.println("Цэс:");
+	            System.out.println("1. Бүх машины зогсоолын жагсаалт");
+	            System.out.println("2. Машин байршуулах");
+	            System.out.println("3. Машин хайх");
+	            System.out.println("4. Шинэ зогсоол нэмэх");
+	            System.out.println("5. Зогсоол хасах");
+	            System.out.println("6. Зогсоолоос машин гаргах");
+	            System.out.println("7. Гарах");
+	            System.out.print("Сонголтоо оруулна уу: ");
 	            int choice = scanner.nextInt();
 	            scanner.nextLine(); 
 	  
@@ -34,33 +32,33 @@ public class lab1 {
 	                    thepark.listAllParkingSlots();
 	                    break;
 	                case 2:
-	                	 System.out.print("Enter parking slot ID: ");
+	                	 System.out.print("Зогсоллын дугаар оруул: ");
 	                	    String slotID = scanner.nextLine();
-	                	    System.out.print("Enter car ID: ");
+	                	    System.out.print("Машины дугаар оруул: ");
 	                	    String carID = scanner.nextLine();
-	                	    System.out.print("Enter owner: ");
+	                	    System.out.print("Эзэмшигчийн нэр оруул");
 	                	    String owner = scanner.nextLine();
-	                	    System.out.print("Is staff (true/false): ");
+	                	    System.out.print("Ажилчин мөн эсэх (true/false): ");
 	                	    boolean isStaff = scanner.nextBoolean();
 	                	    scanner.nextLine();
 
 	                	    thepark.parkCar(slotID, carID, owner, isStaff);
 	                	    break;
 	                case 3:
-	                    System.out.print("Enter car ID: ");
+	                    System.out.print("Машины дугаар оруул: ");
 	                    carID = scanner.nextLine();
 	                    thepark.checkCardID(carID);
 	                    thepark.searchCar(carID);
 	                  
 	                    break;
 	                case 4:
-	                    System.out.print("Enter new parking slot ID: ");
+	                    System.out.print("Шинэ зогсоолын дугаар оруул: ");
 	                    slotID = scanner.nextLine();
 	                    thepark.addslot(slotID);
 	                    
 	                    break;
 	                case 5:
-	                    System.out.print("Enter slot ID to remove: ");
+	                    System.out.print("Устгах зогсоолын дугаарыг оруул: ");
 	                    
 	                    String slotID1 = scanner.nextLine();
 	                    scanner.nextLine(); 
@@ -68,7 +66,7 @@ public class lab1 {
 	                    break;
 
 	                case 6:
-	                    System.out.print("Enter car ID to remove: ");
+	                    System.out.print("Гаргах машины дугаарыг оруул: ");
 	                    String carID1 = scanner.nextLine();
 	                    scanner.nextLine(); 
 	                    thepark.checkCardID(carID1);
@@ -79,7 +77,7 @@ public class lab1 {
 	                    scanner.close();
 	                    System.exit(0);
 	                default:
-	                    System.out.println("Invalid choice. Please try again.");
+	                    System.out.println("Алдаатай утга.Дахин оруулна уу");
 	            }
 	        }
 	    }
@@ -104,19 +102,19 @@ class Park extends ArrayLinearList {
     public void listAllParkingSlots() {
       for(int i =0;i<this.size();i++) {
     	  Slot slot = (Slot) this.get(i);
-    	  System.out.println("Slod ID: "+slot.sid);
+    	  System.out.println("Зогсоолын дугаар: "+slot.sid);
     	  if(slot.car!=null) {
-    		  System.out.print("- Occupied by CAR ID:  " +slot.car.cid);
-    		  System.out.print(" Type: ");
+    		  System.out.print("- Энэ зогсоолд байгаа машины дугаар:  " +slot.car.cid);
+    		  System.out.print(" Tөрөл: ");
     		  if(slot.car.isStaff) {
-    			  System.out.println(" Staff ");
+    			  System.out.println(" Ажилчин ");
     		  }
     		  else {
-    			  System.out.println(" Visitor ");
+    			  System.out.println(" Зочин ");
     		  }
     	  }
     	  else {
-    		  System.out.println("- Empty");
+    		  System.out.println("- Хоосон");
     	  }
       }
     }
@@ -131,55 +129,55 @@ class Park extends ArrayLinearList {
         }
 
         if (selectedSlot == null) {
-            System.out.println("Slot " + slotID + " not found or does not exist.");
+            System.out.println( slotID + " Энэ дугаартай зогсоол олдсонгүй.");
             return; // 
         }
 
         // Check if the car ID is valid
         if (!checkCardID(carID)) {
-            System.out.println("Car ID must start with one or more capital letters followed by 5 digits.");
+            System.out.println("Машины дугаар нь том үсгээр эхэлж араасаа 5-н оронтой дугаартай байна.");
             return;
         }
 
         if (selectedSlot.car != null) {
-            System.out.println("Slot " + slotID + " is already occupied by another car.");
+            System.out.println(slotID + " Энэ дугаартай зогсоолд машин байна");
         } else {
             Car car = new Car(owner, carID, isStaff);
             selectedSlot.car = car;
-            System.out.println("Car with ID " + carID + " has been parked in slot " + slotID);
+            System.out.println( carID + " Энэ дугаартай машин  " + slotID +"-р зогсоолд байна" );
         }
     }
 
     public void searchCar(String carID) {
     	 if (!checkCardID(carID)) {
-    	        System.out.println("CarID must start UpWord and length is 6.");
+    	        System.out.println("Машины дугаар том үсгээр эхэлж араасаа 5 оронтой тоо байна");
     	        return;
     	    }
         for (int i = 0; i < this.size(); i++) {
             Slot slot = (Slot)this.get(i);
             if (slot.car != null && slot.car.cid.equals(carID)) {
-                System.out.println("Car found in Slot " + slot.sid + ":");
-                System.out.println("Slot ID: " + slot.sid);
-                System.out.println("Car ID: " + slot.car.cid);
-                System.out.println("Owner: " + slot.car.owner);
-                System.out.print("Type: ");
+                System.out.println("Машин энэ зогсоолд байна" + slot.sid);
+                System.out.println("Машины зогсоол: " + slot.sid);
+                System.out.println("Машины дугаар: " + slot.car.cid);
+                System.out.println("Эзэн: " + slot.car.owner);
+                System.out.print("Tөрөл: ");
                 if (slot.car.isStaff) {
-                    System.out.println("Staff");
+                    System.out.println("Ажилчин");
                 } else {
-                    System.out.println("Visitor");
+                    System.out.println("Зочин");
                 }
 
                 return; 
             }
         }
-        System.out.println("Car with ID " + carID + " not found in any slot.");
+        System.out.println( carID + "Ийм дугаартай машин олдсонгүй .");
     }
     public void addslot(String slotID){
         Slot slot = new Slot(slotID);
         slot.sid = slotID;
         this.add(this.size(),slot);
 
-        System.out.println("New slot with ID " + slotID + " has been added.");
+        System.out.println(slotID + "Энэ зогсоол нэмэгдлээ.");
   
     }
     public void removeSlot(String slotID) {
@@ -189,32 +187,32 @@ class Park extends ArrayLinearList {
             if (slot.sid.equals(slotID)) {
                 if (slot.car == null) {
                     this.remove(i);
-                    System.out.println("Slot " + slotID + " has been removed.");
+                    System.out.println(slotID + "Энэ зогсоол хасагдлаа.");
                 } else {
-                    System.out.println("Cannot remove Slot " + slotID + " because it's occupied by a car.");
+                    System.out.println(slotID + "Энэ зогсоолыг хасж болохгүй учир нь машин зогсож байна.");
                 }
                 return;
             }
             i++;
         }
-        System.out.println("Slot " + slotID + " not found or does not exist.");
+        System.out.println( slotID + " Энэ зогсоол олдсонгүй");
     }
 
 
     public void removeCar(String carID) {
     	 if (!checkCardID(carID)) {
-    	        System.out.println("CarID must start UpWord and length is 6.");
+    	        System.out.println("Машины дугаар шаардлага хангахгүй байна");
     	        return;
     	    }
         for (int i = 0; i < this.size(); i++) {
             Slot slot = (Slot)this.get(i);
             if (slot.car != null && slot.car.cid.equals(carID)) {
                 slot.car = null;
-                System.out.println("Car with ID " + carID + " has been removed from slot " + slot.sid);
+                System.out.println( carID + " Энэхүү машин " + slot.sid +"энэ зогсоолоос гарлаа");
                 return;
             }
         }
-        System.out.println("Car with ID " + carID + " not found in any slot.");
+        System.out.println(carID + " Энэ машин олдсонгүй.");
     }
    
     public boolean checkCardID(String carID) {
