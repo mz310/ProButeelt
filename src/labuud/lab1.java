@@ -221,7 +221,7 @@ class Park extends ArrayLinearList {
         char[] UpWorld = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'P', 'W', 'V', 'X', 'Y', 'Z'};
 
         if (carID.length() != 6) {
-            return false; // REGEX ASHIGLA
+            return false; // REGEX ASHIGLA REGEX N AMARHAN YM BNLE IIM OLON YM ASHIGLAH SHAARDLAGGU
             
         }
 
