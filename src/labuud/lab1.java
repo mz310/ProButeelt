@@ -1,5 +1,5 @@
 package labuud;
-import java.util.Scanner;
+import java.util.Scanner; 
 import dataStructures.ArrayLinearList;
 public class lab1 {
 
@@ -261,6 +261,6 @@ class Car{
     public Car(String owner, String cid, boolean isStaff) {
         this.owner = owner;
         this.cid = cid;
-        this.isStaff = isStaff;
+        this.isStaff = isStaff; // hello 14:25
     }
 }
