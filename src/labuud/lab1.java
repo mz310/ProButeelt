@@ -24,6 +24,7 @@ public class lab1 {
 	            System.out.println("6. Remove a car from a parking slot");
 	            System.out.println("7. Exit");
 	            System.out.print("Enter your choice: ");
+	            System.out.print("check");
 	            
 	            int choice = scanner.nextInt();
 	            scanner.nextLine(); 
