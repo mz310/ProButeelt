@@ -2,7 +2,7 @@ package labuud;
 import java.util.Scanner; 
 import dataStructures.ArrayLinearList;
 public class lab1 {
-
+	
 	public static void main(String[] args) {
 		Park thepark = new Park();
         Scanner scanner = new Scanner(System.in);
